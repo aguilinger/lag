@@ -4,8 +4,12 @@ MAINTAINER Kelvin Tay <kelvintaywl@gmail.com>
 
 WORKDIR /lag
 
-COPY server.py .
+
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
+COPY server.py .
+
+ENV PORT 8080
+EXPOSE $PORT
 CMD python server.py --port $PORT

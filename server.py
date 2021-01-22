@@ -6,7 +6,7 @@ from japronto import Application, RouteNotFoundException
 from japronto.request import HttpRequest
 
 
-DELAY_MS = 1000  # 1sec
+DELAY_MS = 60000  # 1sec
 
 
 def handler_err_not_found(request: HttpRequest, _: RouteNotFoundException):
@@ -47,7 +47,7 @@ if __name__ == '__main__':
     opts = parse_args()
 
     app = Application()
-    app.router.add_route('/', hello)
+    app.router.add_route('/', handler_delay)
     app.router.add_route('/delay/{time_ms}', handler_delay)
     app.add_error_handler(RouteNotFoundException, handler_err_not_found)
     app.run(debug=True, port=opts.port)
