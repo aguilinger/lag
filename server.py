@@ -6,7 +6,7 @@ from japronto import Application, RouteNotFoundException
 from japronto.request import HttpRequest
 
 
-DELAY_MS = 60000  # 1sec
+DELAY_MS = 20  # 1sec
 
 
 def handler_err_not_found(request: HttpRequest, _: RouteNotFoundException):
