@@ -6,9 +6,6 @@ from japronto import Application, RouteNotFoundException
 from japronto.request import HttpRequest
 
 
-DELAY_MS = 1000  # 1sec
-
-
 def handler_err_not_found(request: HttpRequest, _: RouteNotFoundException):
     return request.Response(code=404, text='Sorry, Not Found')
 
@@ -19,7 +16,7 @@ def hello(request: HttpRequest):
 
 async def handler_delay(request: HttpRequest):
     time_ms = int(
-        request.match_dict.get('time_ms', DELAY_MS)
+        request.match_dict.get('time_ms', 1000)
     )
 
     resp_types = {}

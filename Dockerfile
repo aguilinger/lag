@@ -1,11 +1,13 @@
 FROM python:3.6-slim
 
-MAINTAINER Kelvin Tay <kelvintaywl@gmail.com>
-
 WORKDIR /lag
 
-COPY server.py .
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD python server.py --port $PORT
+COPY server.py .
+
+ENV PORT=80
+EXPOSE ${PORT}
+
+CMD python server.py --port ${PORT}
